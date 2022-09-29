@@ -1,0 +1,14 @@
+# Install Bridge Utils
+$ sudo yum install bridge-utils
+
+#Create Bridge And Add Interface 
+$ sudo brctl addbr slowbridge 
+$ sudo brctl addif slowbridge enp179s0f0
+$ sudo brctl addif slowbridge enp179s0f1
+$ sudo ip link set slowbridge up
+
+#Add Delay
+$ sudo tc qdisc add dev enp179s0f0 root netem delay 100ms
+$ sudo tc qdisc add dev enp179s0f1 root netem delay 100ms
+
+#Delete Configuration
