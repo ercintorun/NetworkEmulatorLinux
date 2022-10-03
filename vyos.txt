@@ -1,0 +1,22 @@
+https://docs.vyos.io/en/equuleus/configuration/trafficpolicy/index.html
+
+set traffic-policy network-emulator <policy-name> bandwidth <rate>
+##Use this command to configure the maximum rate at which traffic will be shaped in a Network Emulator policy. Define the name of the policy and the rate.
+
+set traffic-policy network-emulator <policy-name> burst <burst-size>
+##Use this command to configure the burst size of the traffic in a Network Emulator policy. Define the name of the Network Emulator policy and its traffic burst size (it will be configured through the Token Bucket Filter qdisc). Default:15kb. It will only take effect if you have configured its bandwidth too.
+
+set traffic-policy network-emulator <policy-name> network-delay <delay>
+##Use this command to configure a Network Emulator policy defining its name and the fixed amount of time you want to add to all packet going out of the interface. The latency will be added through the Token Bucket Filter qdisc. It will only take effect if you have configured its bandwidth too. You can use secs, ms and us. Default: 50ms.
+
+set traffic-policy network-emulator <policy-name> packet-corruption <percent>
+##Use this command to emulate noise in a Network Emulator policy. Set the policy name and the percentage of corrupted packets you want. A random error will be introduced in a random position for the chosen percent of packets.
+
+set traffic-policy network-emulator <policy-name> packet-loss <percent>
+##Use this command to emulate packet-loss conditions in a Network Emulator policy. Set the policy name and the percentage of loss packets your traffic will suffer.
+
+set traffic-policy network-emulator <policy-name> packet-reordering <percent> 
+##Use this command to emulate packet-reordering conditions in a Network Emulator policy. Set the policy name and the percentage of reordered packets your traffic will suffer.
+
+set traffic-policy network-emulator <policy-name> queue-limit <limit>
+##Use this command to define the length of the queue of your Network Emulator policy. Set the policy name and the maximum number of packets (1-4294967295) the queue may hold queued at a time.
