@@ -1,0 +1,28 @@
+edit traffic-policy network-emulator drop_test
+  set drop packet-loss 5
+  set network-delay 100
+set interfaces bridge br0
+set interfaces bridge br1
+edit interfaces ethernet eth0
+  set bridge-group bridge br0
+         
+edit interfaces ethernet eth1
+  set bridge-group bridge br0
+edit interfaces ethernet eth0 vif 100
+ set bridge-group bridge br1 
+edit interfaces ethernet eth1 vif 100
+ set bridge-group bridge br1 
+
+edit interfaces ethernet eth0 vif 100
+  set traffic-policy out ercin_drop
+commit
+save
+
+######network policy  creation
+ 
+create Bridge interface 0
+create Bridge interface 1
+include Ethernet0 native vlan to bridge group 0
+include Ethernet1 native vlan to bridge group 0
+include Ethernet0  vlan100 to bridge group 1
+include Ethernet1  vlan100 to bridge group 1
