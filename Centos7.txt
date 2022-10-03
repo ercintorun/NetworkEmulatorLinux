@@ -12,3 +12,5 @@ $ sudo tc qdisc add dev enp179s0f0 root netem delay 100ms
 $ sudo tc qdisc add dev enp179s0f1 root netem delay 100ms
 
 #Delete Configuration
+sudo tc qdisc del dev enp179s0f0 root
+sudo tc qdisc del dev enp179s0f1 root
